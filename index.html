@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Life Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <!-- Greeting, date and time -->
+      <header class="card hero">
+        <button
+          type="button"
+          id="theme-btn"
+          class="btn btn-ghost theme-btn"
+          aria-pressed="false">
+          Dark mode
+        </button>
+        <p id="clock" class="clock" aria-live="off">00:00:00</p>
+        <p id="date" class="date"></p>
+        <h1 class="greeting">
+          <span id="greeting-text">Hello</span
+          ><span id="name-wrap"
+            >,
+            <button
+              type="button"
+              id="name-btn"
+              class="name-btn"
+              title="Change your name">
+              friend
+            </button>
+          </span>
+        </h1>
+        <form id="name-form" class="name-form" hidden>
+          <label for="name-input" class="sr-only">Your name</label>
+          <input
+            id="name-input"
+            type="text"
+            maxlength="24"
+            placeholder="Your name"
+            autocomplete="given-name" />
+          <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+      </header>
+
+      <main class="grid">
+        <!-- Focus timer -->
+        <section class="card timer-card" aria-labelledby="timer-title">
+          <h2 id="timer-title">Focus Timer</h2>
+          <p id="timer-display" class="timer-display" role="timer">25:00</p>
+          <p id="timer-status" class="timer-status">Ready to focus</p>
+          <div class="progress" aria-hidden="true">
+            <span id="timer-progress"></span>
+          </div>
+          <div class="btn-row">
+            <button type="button" id="timer-start" class="btn btn-primary">
+              Start
+            </button>
+            <button type="button" id="timer-stop" class="btn btn-secondary">
+              Stop
+            </button>
+            <button type="button" id="timer-reset" class="btn btn-secondary">
+              Reset
+            </button>
+          </div>
+          <form id="timer-form" class="timer-form">
+            <label for="timer-minutes">Session length (minutes)</label>
+            <div class="inline">
+              <input
+                id="timer-minutes"
+                type="number"
+                min="1"
+                max="180"
+                value="25"
+                inputmode="numeric" />
+              <button type="submit" class="btn btn-secondary">Set</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- To-do list -->
+        <section class="card tasks-card" aria-labelledby="tasks-title">
+          <div class="card-head">
+            <h2 id="tasks-title">Tasks</h2>
+            <p id="task-count" class="count"></p>
+          </div>
+          <form id="task-form" class="inline">
+            <label for="task-input" class="sr-only">New task</label>
+            <input
+              id="task-input"
+              type="text"
+              maxlength="120"
+              placeholder="Add a new task..."
+              autocomplete="off"
+              required />
+            <button type="submit" class="btn btn-primary">Add</button>
+          </form>
+          <ul id="task-list" class="task-list"></ul>
+          <p id="task-empty" class="empty" hidden>
+            No tasks yet. Add the first thing you want to finish today.
+          </p>
+        </section>
+
+        <!-- Quick links -->
+        <section class="card links-card" aria-labelledby="links-title">
+          <h2 id="links-title">Quick Links</h2>
+          <form id="link-form" class="link-form">
+            <label for="link-name" class="sr-only">Link name</label>
+            <input
+              id="link-name"
+              type="text"
+              maxlength="24"
+              placeholder="Link name"
+              required />
+            <label for="link-url" class="sr-only">Link address</label>
+            <input id="link-url" type="text" placeholder="URL" required />
+            <button type="submit" class="btn btn-primary">Add Link</button>
+          </form>
+          <p id="link-error" class="error" role="alert" hidden></p>
+          <ul id="link-list" class="link-list"></ul>
+          <p id="link-empty" class="empty" hidden>
+            No links yet. Add a site you visit often.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
